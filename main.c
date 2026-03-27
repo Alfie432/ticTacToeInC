@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 
 void clearBuffer(void);
@@ -6,16 +8,20 @@ void clearBuffer(void);
 
 int main(void)
 {
-    int choice; 
+    int option; 
+    char choices[2][8]; // index 0 is for user, index 1 is for computer
+
+    // seed the number generator to make it random
+    
 
     // repeat the main game loop
     while (1)
     {
         printf("\n1. Play\n2. Quit\nEnter Choice: ");
-        scanf("%d", &choice);
+        scanf("%d", &option);
         clearBuffer();
 
-        switch (choice)
+        switch (option)
         {
         case 1:
             break;
@@ -41,3 +47,5 @@ void clearBuffer(void)
         ch = getchar();
     }
 }
+
+
