@@ -2,17 +2,20 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define ARRAYLENGTH 2
+#define CHARLENGTH 8
 
 void clearBuffer(void);
+void getUserChoice(char *storeBuffer);
 
 
 int main(void)
 {
     int option; 
-    char choices[2][8]; // index 0 is for user, index 1 is for computer
+    char choices[ARRAYLENGTH][CHARLENGTH]; // index 0 is for user, index 1 is for computer
 
     // seed the number generator to make it random
-    
+    srand(time(NULL));
 
     // repeat the main game loop
     while (1)
@@ -23,13 +26,14 @@ int main(void)
 
         switch (option)
         {
-        case 1:
-            break;
-        case 2:
-            return 0;
-        default:
-            printf("\nNot a valid choice.\n");
-            continue;
+            case 1:
+                getUserChoice(choices);
+                break;
+            case 2:
+                return 0;
+            default:
+                printf("\nNot a valid choice.\n");
+                continue;
         }
 
     }
@@ -48,4 +52,35 @@ void clearBuffer(void)
     }
 }
 
+void getUserChoice(char *storeBuffer)
+{
+    int choice; 
 
+    printf("\n1) Rock\n2) Paper\n 3) Scissor\nEnter your choice: ");
+    scanf("%d", &choice);
+    clearBuffer();
+
+    if (choice == 1)
+    {
+        storeBuffer[0] = 'R';
+    }
+    else if (choice == 2)
+    {
+        storeBuffer[0] = 'P';
+    }
+    else if (choice == 3)
+    {
+        storeBuffer[0] = 'S';
+    }
+    else
+    {
+        printf("\nNot a valid choice.\n");
+        exit(1); // end the program
+    }
+}
+
+
+void getComputerChoice(char *storeBuffer)
+{
+
+}
