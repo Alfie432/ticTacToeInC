@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
-#define ARRAYLENGTH 2
-#define CHARLENGTH 8
+#define MAX 2
 
 void clearBuffer(void);
 void getUserChoice(char *storeBuffer);
 void getComputerChoice(char *storeBuffer);
-
+void decideWinner(char *storeBuffer);
 
 int main(void)
 {
     int option; 
-    char choices[ARRAYLENGTH][CHARLENGTH]; // index 0 is for user, index 1 is for computer
+    char choices[MAX][MAX]; // index 0 is for user, index 1 is for computer
 
     // seed the number generator to make it random
     srand(time(NULL));
@@ -29,6 +29,8 @@ int main(void)
         {
             case 1:
                 getUserChoice(choices);
+                getComputerChoice(choices);
+                decideWinner(choices);
                 break;
             case 2:
                 return 0;
@@ -96,5 +98,34 @@ void getComputerChoice(char *storeBuffer)
     else if (choice == 3)
     {
         storeBuffer[1] = 'S';
+    }
+}
+
+
+void decideWinner(char *storeBuffer)
+{
+    char user[MAX];
+    char computer[MAX];
+
+    // copy the values into the variable to make the checks easier
+    strcpy(user, storeBuffer[0]);
+    strcpy(computer, storeBuffer[1]);
+
+    // check winner
+    if ((strcmp(user, 'R') == 0) && (strcmp(computer, "S") == 0))
+    {
+        printf("\nYou Win!\n");
+    }
+    else if ((strcmp(user, 'P') == 0) && (strcmp(computer, "R") == 0))
+    {
+        printf("\nYou Win!\n");
+    }
+    else if ((strcmp(user, 'S') == 0) && (strcmp(computer, "P") == 0))
+    {
+        printf("\nYou Win!\n");
+    }
+    else
+    {
+        printf("\nThe Computer Wins!\n");
     }
 }
