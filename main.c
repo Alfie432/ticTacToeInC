@@ -7,6 +7,7 @@
 
 void clearBuffer(void);
 void getUserChoice(char *storeBuffer);
+void getComputerChoice(char *storeBuffer);
 
 
 int main(void)
@@ -82,5 +83,18 @@ void getUserChoice(char *storeBuffer)
 
 void getComputerChoice(char *storeBuffer)
 {
+    int choice = (rand() % 3) + 1;
 
+    if (choice == 1)
+    {
+        storeBuffer[1] = 'R';
+    }
+    else if (choice == 2)
+    {
+        storeBuffer[1] = 'P';
+    }
+    else if (choice == 3)
+    {
+        storeBuffer[1] = 'S';
+    }
 }
