@@ -13,7 +13,7 @@ void decideWinner(char *storeBuffer);
 int main(void)
 {
     int option; 
-    char choices[MAX][MAX]; // index 0 is for user, index 1 is for computer
+    char choices[MAX]; // index 0 is for user, index 1 is for computer
 
     // seed the number generator to make it random
     srand(time(NULL));
@@ -59,7 +59,7 @@ void getUserChoice(char *storeBuffer)
 {
     int choice; 
 
-    printf("\n1) Rock\n2) Paper\n 3) Scissor\nEnter your choice: ");
+    printf("\n1) Rock\n2) Paper\n3) Scissor\nEnter your choice: ");
     scanf("%d", &choice);
     clearBuffer();
 
@@ -104,23 +104,22 @@ void getComputerChoice(char *storeBuffer)
 
 void decideWinner(char *storeBuffer)
 {
-    char user[MAX];
-    char computer[MAX];
-
-    // copy the values into the variable to make the checks easier
-    strcpy(user, storeBuffer[0]);
-    strcpy(computer, storeBuffer[1]);
-
     // check winner
-    if ((strcmp(user, 'R') == 0) && (strcmp(computer, "S") == 0))
+    /*
+        80 = P: paper
+        82 = R: rock
+        83 = S: scissors
+    */
+
+    if ((storeBuffer[0] == 82) && (storeBuffer[1] == 83))
     {
         printf("\nYou Win!\n");
     }
-    else if ((strcmp(user, 'P') == 0) && (strcmp(computer, "R") == 0))
+    else if ((storeBuffer[0] == 80) && (storeBuffer[1] == 82))
     {
         printf("\nYou Win!\n");
     }
-    else if ((strcmp(user, 'S') == 0) && (strcmp(computer, "P") == 0))
+    else if ((storeBuffer[0] == 83) && (storeBuffer[1] == 80))
     {
         printf("\nYou Win!\n");
     }
