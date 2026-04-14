@@ -4,6 +4,7 @@
 #include <string.h>
 
 #define MAX 2
+#define MAX_WORD 10
 
 void clearBuffer(void);
 void getUserChoice(char *storeBuffer);
@@ -142,7 +143,7 @@ void decideWinner(char *storeBuffer)
 
 void viewChoices(char *storageBuffer)
 {   
-    char choices[MAX][10];
+    char choices[MAX][MAX_WORD];
 
     // handle user choice
     if (storageBuffer[0] == 80)
