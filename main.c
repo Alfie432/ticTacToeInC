@@ -9,6 +9,7 @@ void clearBuffer(void);
 void getUserChoice(char *storeBuffer);
 void getComputerChoice(char *storeBuffer);
 void decideWinner(char *storeBuffer);
+void viewChoices(char *storageBuffer);
 
 int main(void)
 {
@@ -113,18 +114,67 @@ void decideWinner(char *storeBuffer)
 
     if ((storeBuffer[0] == 82) && (storeBuffer[1] == 83))
     {
+        viewChoices(storeBuffer);
         printf("\nYou Win!\n");
     }
     else if ((storeBuffer[0] == 80) && (storeBuffer[1] == 82))
     {
+        viewChoices(storeBuffer);
         printf("\nYou Win!\n");
     }
     else if ((storeBuffer[0] == 83) && (storeBuffer[1] == 80))
     {
+        viewChoices(storeBuffer);
         printf("\nYou Win!\n");
+    }
+    else if (storeBuffer[0] == storeBuffer[1])
+    {
+        viewChoices(storeBuffer);
+        printf("\nTie!\n");
     }
     else
     {
+        viewChoices(storeBuffer);
         printf("\nThe Computer Wins!\n");
     }
+}
+
+
+void viewChoices(char *storageBuffer)
+{   
+    char choices[MAX][10];
+
+    // handle user choice
+    if (storageBuffer[0] == 80)
+    {
+        strcpy(choices[0], "Paper");
+    }
+    else if (storageBuffer[0] == 82)
+    {
+        strcpy(choices[0], "Rock");
+    }
+    else if (storageBuffer[0] == 83)
+    {
+        strcpy(choices[0], "Scissors");
+    }
+
+
+    // handle computer choice
+    if (storageBuffer[1] == 80)
+    {
+        strcpy(choices[1], "Paper");
+    }
+    else if (storageBuffer[1] == 82)
+    {
+        strcpy(choices[1], "Rock");
+    }
+    else if (storageBuffer[1] == 83)
+    {
+        strcpy(choices[1], "Scissors");
+    }
+
+
+
+    printf("\nUser: %s\n", choices[0]);
+    printf("Computer: %s\n", choices[1]);
 }
